@@ -30,13 +30,22 @@ android {
     buildToolsVersion "30.0.2"
 
     // Custom add using Java version 11.
-    jackOptions {
-        enabled true
-    }
+    // Configure only for each module that uses Java 8
+    // language features (either in its source code or
+    // through dependencies).
+    // --------------------------------
+    
     compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
-    } 
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    // --------------------------------
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
